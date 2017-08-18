@@ -1,0 +1,62 @@
+<!-- This file you customise to get your desired layout. -->
+
+<style>
+.form {
+  display: table;
+  table-layout: fixed;
+}
+
+.form-row {
+  display: table-row;
+}
+
+.ms-formlabel,
+.ms-formbody {
+  display: table-cell;
+}
+
+.hidden {
+  display: none !important;
+}
+
+[data-field="*"] {
+  display: none;
+}
+
+#idAttachmentsTable .ms-vb {
+  vertical-align: text-bottom;
+}
+</style>
+
+<!--
+  I've replicated the standard SharePoint structure as closely as possible, but using DIVs with
+  display: table etc. intead of TABLEs. This is to give you a reference point from which you can
+  customise further.
+-->
+
+<div data-role="form" class="form hidden">
+
+  <!-- Shorthand placeholder method. Relies on Longhand Generic existing in this file. -->
+  <div data-field="Title" class="form-row"></div>
+
+  <!-- Longhand Generic/All 'other' fields placeholder method. -->
+  <div data-field="*" class="form-row">
+    <div class="ms-formlabel">
+      <h3 class="ms-standardheader">
+        <nobr>{Title}<span v-if="{Required}" class="ms-formvalidation"> *</span></nobr>
+      </h3>
+    </div>
+    <div class="ms-formbody"><span data-role="field-control"></span></div>
+  </div>
+
+  <!-- Longhand placeholder method, with id="SPFieldAttachments" so SharePoint
+    automatically hides/shows if there aren't/are attachments. -->
+  <div data-field="Attachments" class="form-row">
+    <div class="ms-formlabel">
+      <h3 class="ms-standardheader">
+        <nobr>{Title}<span v-if="{Required}" class="ms-formvalidation"> *</span></nobr>
+      </h3>
+    </div>
+    <div class="ms-formbody" id="SPFieldAttachments"><span data-role="field-control"></span></div>
+  </div>
+</div>
